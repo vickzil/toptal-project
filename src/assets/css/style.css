@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito|Cinzel|Yeseva+One|Questrial|Vollkorn|Titillium+Web|Roboto+Condensed|Slabo+27px");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+  color: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Cinzel", cursive;
+}
+
+header {
+  position: relative;
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
+  -webkit-background-image: linear-gradient(
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url(../../assets//img/bg.jpg);
+  background-image: linear-gradient(rgba(00, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+    url(../../assets//img/bg.jpg);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 370px;
+  /* overflow-x: hidden; */
+  text-align: left;
+}
+
+.header-content {
+  padding: 100px 70px;
+}
+
+.header-content h1 {
+  font: 34px "Vollkorn";
+  color: white;
+  margin-top: 10px;
+}
+
+.header-content p {
+  font: 24px "Vollkorn";
+  color: white;
+  margin-top: 10px;
+}
+
+.header-content a {
+  font: 13px "Cinzel";
+  color: #fff;
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+
+.svg--sm {
+  display: none;
+}
+
+.star i {
+  margin-right: 3px;
+}
+
+.for-rating {
+  color: yellow;
+}
+
+.for-gray {
+  color: rgb(211, 210, 210);
+}
+
+.for-green {
+  color: #26a69a;
+  font-weight: bold;
+}
+
+[class*="loader"]:before {
+  content: "Please wait...";
+}
+
+.loader {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 14px;
+  clip-path: inset(0 3ch 0 0);
+  animation: spin 1s steps(4) infinite;
+  text-transform: uppercase;
+}
+@keyframes spin {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
+}

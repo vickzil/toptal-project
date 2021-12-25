@@ -1,32 +1,64 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Header />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
+    <AddFoodModal />
+    <Footer />
   </div>
 </template>
 
+<script>
+import "./assets/css/style.css";
+import Header from "./components/header/Header.vue";
+import Footer from "./components/footer/Footer.vue";
+import AddFoodModal from "./components/modal/AddFoodModal.vue";
+export default {
+  components: {
+    Header,
+    AddFoodModal,
+    Footer,
+  },
+
+  methods: {
+    getUser: function () {
+      let localUser = localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : null;
+
+      if (localUser) {
+        this.$store.dispatch("setUserName", localUser);
+        this.getFoodList();
+      }
+    },
+
+    getFoodList() {
+      let allFoods = localStorage.getItem("foods")
+        ? JSON.parse(localStorage.getItem("foods"))
+        : null;
+
+      if (allFoods) {
+        this.$store.dispatch("saveAllFoods", allFoods);
+      }
+    },
+  },
+
+  mounted() {
+    this.getUser();
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease-out;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  /* transform: scale(0.9); */
 }
 </style>
